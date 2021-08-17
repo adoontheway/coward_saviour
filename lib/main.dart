@@ -16,6 +16,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primaryColor: Colors.white),
       home: IndexPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -73,7 +74,6 @@ class _IndexPageState extends State<IndexPage> {
           return SimpleDialog(
             title: Text("Add ${_titles[_selectedIndex]}"),
             children: [_addViews[_selectedIndex]],
-            // backgroundColor: Colors.grey,
           );
           // return _addViews[_selectedIndex];
         });
