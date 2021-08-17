@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class MotivationPage extends StatefulWidget {
   @override
   _MotivationPageState createState() => _MotivationPageState();

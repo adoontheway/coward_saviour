@@ -1,6 +1,9 @@
 import 'package:coward_saver/pages/motives.dart';
 import 'package:coward_saver/pages/records.dart';
 import 'package:coward_saver/pages/targets.dart';
+import 'package:coward_saver/view/add_motive.dart';
+import 'package:coward_saver/view/add_record.dart';
+import 'package:coward_saver/view/add_target.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.grey),
+      theme: ThemeData(primaryColor: Colors.white),
       home: IndexPage(),
     );
   }
@@ -25,6 +28,12 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   int _selectedIndex = 0;
   List<Widget> _views = <Widget>[RecordPage(), MotivationPage(), TargetPage()];
+  List<Widget> _addViews = <Widget>[
+    AddRecordView(),
+    AddMotiveView(),
+    AddTargetView()
+  ];
+  List<String> _titles = ["record", "motive", "target"];
   List<BottomNavigationBarItem> _bottomItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Records'),
     BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Motivations'),
@@ -35,7 +44,7 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("懦夫救星"),
+        title: Text("Coward Saver"), //Text("懦夫救星"),
       ),
       body: _views[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -57,6 +66,17 @@ class _IndexPageState extends State<IndexPage> {
 
   void _onAdd() {
     print("on add");
+
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return SimpleDialog(
+            title: Text("Add ${_titles[_selectedIndex]}"),
+            children: [_addViews[_selectedIndex]],
+            // backgroundColor: Colors.grey,
+          );
+          // return _addViews[_selectedIndex];
+        });
   }
 
   void _onItemTap(int value) {
