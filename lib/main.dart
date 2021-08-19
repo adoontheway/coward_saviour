@@ -27,19 +27,32 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
+  GlobalKey<State> refreshKey = GlobalKey();
   int _selectedIndex = 0;
-  List<Widget> _views = <Widget>[RecordPage(), MotivationPage(), TargetPage()];
-  List<Widget> _addViews = <Widget>[
-    AddRecordView(),
-    AddMotiveView(),
-    AddTargetView()
-  ];
-  List<String> _titles = ["record", "motive", "target"];
-  List<BottomNavigationBarItem> _bottomItems = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Records'),
-    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Motivations'),
-    BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Targets'),
-  ];
+  List<Widget> _views = <Widget>[];
+  List<Widget> _addViews = <Widget>[];
+  List<GlobalKey> _keys = <GlobalKey>[];
+  List<String> _titles = [];
+  List<BottomNavigationBarItem> _bottomItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _keys = [GlobalKey(), GlobalKey(), GlobalKey()];
+    _views = <Widget>[
+      RecordPage(_keys[0]),
+      MotivationPage(_keys[1]),
+      TargetPage(_keys[2])
+    ];
+    _addViews = <Widget>[AddRecordView(), AddMotiveView(), AddTargetView()];
+    _titles = ["记录", "动力", "小目标"];
+
+    _bottomItems = <BottomNavigationBarItem>[
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: '日常记录'),
+      BottomNavigationBarItem(icon: Icon(Icons.business), label: '动力'),
+      BottomNavigationBarItem(icon: Icon(Icons.school), label: '小目标'),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +88,10 @@ class _IndexPageState extends State<IndexPage> {
           );
         }).then((value) {
       if (value) {
-        setState(() {});
-        // _views[_selectedIndex].
+        print('closed, need update? - $value');
+        // setState(() {});
+        // _views[_selectedIndex]
+        _keys[_selectedIndex].currentState?.setState(() {});
       }
     });
   }

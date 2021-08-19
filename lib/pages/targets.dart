@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TargetPage extends StatefulWidget {
+  final Key key;
+  const TargetPage(this.key);
   @override
   _TargetPageState createState() => _TargetPageState();
 }

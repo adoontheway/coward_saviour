@@ -3,6 +3,8 @@ import 'package:coward_saver/model/profile.dart';
 import 'package:flutter/material.dart';
 
 class MotivationPage extends StatefulWidget {
+  final Key key;
+  const MotivationPage(this.key);
   @override
   _MotivationPageState createState() => _MotivationPageState();
 }
