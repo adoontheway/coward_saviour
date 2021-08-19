@@ -27,23 +27,26 @@ class _AddRecordViewState extends State<AddRecordView> {
             controller: _recordController,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(10.0),
-              labelText: "Record",
+              labelText: "内容",
             ),
           ),
           TextField(
             controller: _costController,
+            maxLines: 1,
+            maxLength: 10,
+            keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
             ],
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(10.0),
-              labelText: "Time cost",
+              labelText: "花费（时间，人力，物力）",
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text("Useful:"),
+              Text("有用吗？对你对未来有任何帮助吗？"),
               Switch(
                 value: _useful,
                 onChanged: (value) {
