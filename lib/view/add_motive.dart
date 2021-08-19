@@ -12,11 +12,7 @@ class _AddMotiveViewState extends State<AddMotiveView> {
   void _onAdd() {
     print("the input content is ${_contentController.text}");
     Profile.addMotivation(_contentController.text, _curLevel);
-    _onCancel();
-  }
-
-  void _onCancel() {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(true);
   }
 
   void _onChange(double value) {
@@ -76,7 +72,7 @@ class _AddMotiveViewState extends State<AddMotiveView> {
               ),
               OutlinedButton(
                 child: Text("Cancel"),
-                onPressed: _onCancel,
+                onPressed: () => Navigator.of(context).pop(false),
               ),
             ],
           ),
