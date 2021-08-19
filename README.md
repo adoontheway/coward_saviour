@@ -1,18 +1,10 @@
 # 懦夫救星/懦夫克星
 
+## 灵感&目标
 记录自己每天的所作所为，  
 记下你的动力：你的竞争对手，仇人的生活；你的家人的生活等等；  
 给自己订一些小目标
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 进度&下一步
+* 当前的新增界面基本通了
+* 下一步要确认怎么做到新增之后界面即时刷新

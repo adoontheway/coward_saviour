@@ -66,8 +66,6 @@ class _IndexPageState extends State<IndexPage> {
   }
 
   void _onAdd() {
-    print("on add");
-
     showDialog(
         context: context,
         builder: (BuildContext ctx) {
@@ -75,8 +73,12 @@ class _IndexPageState extends State<IndexPage> {
             title: Text("Add ${_titles[_selectedIndex]}"),
             children: [_addViews[_selectedIndex]],
           );
-          // return _addViews[_selectedIndex];
-        });
+        }).then((value) {
+      if (value) {
+        setState(() {});
+        // _views[_selectedIndex].
+      }
+    });
   }
 
   void _onItemTap(int value) {

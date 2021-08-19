@@ -1,4 +1,3 @@
-import 'package:coward_saver/model/model.dart';
 import 'package:coward_saver/model/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,9 +13,9 @@ class _AddRecordViewState extends State<AddRecordView> {
   TextEditingController _costController = TextEditingController();
 
   void _addRecord() {
-    int cost = int.parse(_costController.text),;
+    int cost = int.parse(_costController.text);
     Profile.addRecord(_recordController.text, DateTime.now(), cost);
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(true);
   }
 
   @override
@@ -69,7 +68,7 @@ class _AddRecordViewState extends State<AddRecordView> {
               OutlinedButton(
                   child: Text("cancel"),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(false);
                   })
             ],
           ),
