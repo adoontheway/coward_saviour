@@ -1,9 +1,10 @@
 class Model {}
 
 class Record {
-  String content;
-  DateTime dateTime;
-  Record({required this.content, required this.dateTime});
+  String content; //what did you do
+  DateTime dateTime; // create time
+  int cost; //time cost in hour
+  Record({required this.content, required this.dateTime, required this.cost});
 }
 
 class Motivation {

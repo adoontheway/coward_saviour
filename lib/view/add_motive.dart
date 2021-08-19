@@ -1,6 +1,5 @@
 import 'package:coward_saver/model/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class AddMotiveView extends StatefulWidget {
   @override
@@ -13,10 +12,10 @@ class _AddMotiveViewState extends State<AddMotiveView> {
   void _onAdd() {
     print("the input content is ${_contentController.text}");
     Profile.addMotivation(_contentController.text, _curLevel);
+    _onCancel();
   }
 
   void _onCancel() {
-    print("cancel clicked");
     Navigator.of(context).pop();
   }
 
@@ -30,15 +29,17 @@ class _AddMotiveViewState extends State<AddMotiveView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      margin: const EdgeInsets.all(10.0),
+      width: 480,
+      // margin: const EdgeInsets.all(10.0),
       child: Column(
         children: <Widget>[
-          Text("Content"),
           TextField(
-            autofocus: true,
+            autofocus: false,
             maxLines: 1,
             controller: _contentController,
+            decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(10.0),
+                labelText: "Content"),
           ),
           SizedBox(
             height: 10,
@@ -49,6 +50,7 @@ class _AddMotiveViewState extends State<AddMotiveView> {
             max: 5.0,
             min: 1.0,
             onChanged: _onChange,
+
             semanticFormatterCallback: (value) {
               return "Level: ${value.round()}";
             },

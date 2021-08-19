@@ -31,4 +31,14 @@ class Profile {
   }
 
   static get motivations => _motivations;
+
+  static addRecord(String content, DateTime date, int cost) {
+    _records.add(Record(content: content, dateTime: date, cost: cost));
+  }
+
+  static delRecord(Record rec) {
+    _records.remove(rec);
+  }
+
+  static get records => _records;
 }
