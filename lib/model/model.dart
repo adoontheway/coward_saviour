@@ -13,4 +13,9 @@ class Motivation {
   Motivation({required this.content, required this.level});
 }
 
-class Target {}
+class Target {
+  String content;
+  DateTime deadline;
+  int level;
+  Target({required this.content, required this.deadline, required this.level});
+}

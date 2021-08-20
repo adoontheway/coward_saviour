@@ -1,12 +1,40 @@
+import 'dart:convert';
+
 import 'package:coward_saver/model/model.dart';
+import 'package:dio/dio.dart';
+
+import '../global.dart';
 
 class Profile {
   static List<Motivation> _motivations = [];
   static List<Target> _targets = [];
   static List<Record> _records = [];
   static final String _remote = "127.0.0.1";
-  static fetchFromRemote() {}
-  static fetchFromLocal() {}
+  static fetchFromRemote() {
+    Dio().get(_remote).then((value) => {
+          //todo
+        });
+  }
+
+  static fetchFromLocal() {
+    int? dv;
+    //get version:
+    Global.sharedPreferences.then((prefs) {
+      //数据版本与当前数据版本对比
+      dv = prefs.getInt("dv");
+      if (dv != null && dv != DVersion) {
+        //todo
+
+      }
+    });
+    if (dv == null || dv == 0) {
+      return;
+    }
+    //get motivations
+    //get targets
+    //get records
+  }
+
   static syncLocal() {}
   static syncRemote() {}
 
@@ -22,12 +50,20 @@ class Profile {
     }
   }
 
+  static modifyMotivation(Motivation mov) {
+    //todo
+  }
+
   static addMotivation(String content, int level) {
     _motivations.add(Motivation(content: content, level: level));
+    Global.sharedPreferences.then(
+        (prefs) => {prefs.setString("motivations", jsonEncode(_motivations))});
   }
 
   static delMotivation(Motivation mov) {
     _motivations.remove(mov);
+    Global.sharedPreferences.then(
+        (prefs) => {prefs.setString("motivations", jsonEncode(_motivations))});
   }
 
   static get motivations => _motivations;
@@ -41,4 +77,18 @@ class Profile {
   }
 
   static get records => _records;
+
+  static addTarget(String content, DateTime date, int level) {
+    _targets.add(Target(content: content, deadline: date, level: level));
+  }
+
+  static delTarget(Target tar) {
+    _targets.remove(tar);
+  }
+
+  static get targets => _targets;
+
+  static clear() {
+    Global.clear();
+  }
 }
