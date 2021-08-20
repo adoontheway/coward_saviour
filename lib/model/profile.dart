@@ -57,13 +57,13 @@ class Profile {
   static addMotivation(String content, int level) {
     _motivations.add(Motivation(content: content, level: level));
     Global.sharedPreferences.then(
-        (prefs) => {prefs.setString("motivations", jsonEncode(_motivations))});
+        (prefs) => {prefs.setString(MotivationKey, jsonEncode(_motivations))});
   }
 
   static delMotivation(Motivation mov) {
     _motivations.remove(mov);
     Global.sharedPreferences.then(
-        (prefs) => {prefs.setString("motivations", jsonEncode(_motivations))});
+        (prefs) => {prefs.setString(MotivationKey, jsonEncode(_motivations))});
   }
 
   static get motivations => _motivations;
