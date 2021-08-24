@@ -1,6 +1,8 @@
 // current version:for upgrade use
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'mgr/mock_data.dart';
+
 const String Version = '0.0.1';
 const int DVersion = 1;
 const String MotivationKey = "motivations";
@@ -21,8 +23,8 @@ class Global {
   }
 
   static _initMockData() {
-    Map<String, Object> mockData = {};
-    SharedPreferences.setMockInitialValues(mockData);
+    MockData.initMockData()
+        .then((value) => {print("mock data is initialized")});
   }
 
   static Future<SharedPreferences> get sharedPreferences => _sharedPreferences;

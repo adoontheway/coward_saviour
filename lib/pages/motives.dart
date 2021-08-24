@@ -1,4 +1,4 @@
-import 'package:coward_saver/model/profile.dart';
+import 'package:coward_saver/mgr/profile.dart';
 import 'package:coward_saver/models/motivation.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,7 @@ class _MotivationPageState extends State<MotivationPage> {
             separatorBuilder: (BuildContext context, int index) {
               return Divider(
                 height: 5.0,
-                color: Colors.grey[300],
+                color: Colors.black26,
               );
             },
             itemCount: _motivations.length,

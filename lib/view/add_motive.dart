@@ -1,4 +1,4 @@
-import 'package:coward_saver/model/profile.dart';
+import 'package:coward_saver/mgr/profile.dart';
 import 'package:flutter/material.dart';
 
 class AddMotiveView extends StatefulWidget {
