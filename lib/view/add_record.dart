@@ -3,21 +3,19 @@ import 'package:coward_saver/model/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum RecordUseful { Useful, Useless, UNKNOWN }
-
 class AddRecordView extends StatefulWidget {
   @override
   _AddRecordViewState createState() => _AddRecordViewState();
 }
 
 class _AddRecordViewState extends State<AddRecordView> {
-  RecordUseful _useful = RecordUseful.Useful; //当前做的事情是否有用
+  bool _useful = true; //当前做的事情是否有用
   TextEditingController _recordController = TextEditingController();
   TextEditingController _costController = TextEditingController();
 
   void _addRecord() {
     int cost = int.parse(_costController.text);
-    Profile.addRecord(_recordController.text, DateTime.now(), cost);
+    Profile.addRecord(_recordController.text, DateTime.now(), _useful, cost);
     Navigator.of(context).pop(true);
   }
 
@@ -63,7 +61,7 @@ class _AddRecordViewState extends State<AddRecordView> {
             children: <Widget>[
               Radio(
                 groupValue: this._useful,
-                value: RecordUseful.Useless,
+                value: true,
                 onChanged: _onUseful,
               ),
               Text(
@@ -73,21 +71,11 @@ class _AddRecordViewState extends State<AddRecordView> {
               ),
               Radio(
                 groupValue: this._useful,
-                value: RecordUseful.UNKNOWN,
+                value: false,
                 onChanged: _onUseful,
               ),
               Text(
                 '没用/感觉没用',
-                style:
-                    TextStyle(color: TextLabelColor, fontSize: FontSizeLabel),
-              ),
-              Radio(
-                groupValue: this._useful,
-                value: RecordUseful.Useful,
-                onChanged: _onUseful,
-              ),
-              Text(
-                '我也不知道呢',
                 style:
                     TextStyle(color: TextLabelColor, fontSize: FontSizeLabel),
               ),

@@ -1,5 +1,5 @@
-import 'package:coward_saver/model/model.dart';
 import 'package:coward_saver/model/profile.dart';
+import 'package:coward_saver/models/motivation.dart';
 import 'package:flutter/material.dart';
 
 class MotivationPage extends StatefulWidget {

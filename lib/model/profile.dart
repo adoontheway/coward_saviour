@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:coward_saver/model/model.dart';
+import 'package:coward_saver/models/motivation.dart';
+import 'package:coward_saver/models/record.dart';
+import 'package:coward_saver/models/target.dart';
 import 'package:dio/dio.dart';
 
 import '../global.dart';
@@ -68,8 +70,9 @@ class Profile {
 
   static get motivations => _motivations;
 
-  static addRecord(String content, DateTime date, int cost) {
-    _records.add(Record(content: content, dateTime: date, cost: cost));
+  static addRecord(String content, DateTime date, bool useful, int cost) {
+    _records.add(
+        Record(content: content, datetime: date, useful: useful, cost: cost));
   }
 
   static delRecord(Record rec) {
