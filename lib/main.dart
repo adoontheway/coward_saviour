@@ -89,8 +89,6 @@ class _IndexPageState extends State<IndexPage> {
         }).then((value) {
       if (value) {
         print('closed, need update? - $value');
-        // setState(() {});
-        // _views[_selectedIndex]
         _keys[_selectedIndex].currentState?.setState(() {});
       }
     });

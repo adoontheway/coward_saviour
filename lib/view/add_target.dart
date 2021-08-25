@@ -1,3 +1,4 @@
+import 'package:coward_saver/mgr/profile.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class AddTargetView extends StatefulWidget {
 class _AddTargetViewState extends State<AddTargetView> {
   TextEditingController _contentController = TextEditingController();
   int _curLevel = 1;
+  DateTime _deadline = DateTime(2021);
 
   void _onChange(double value) {
     print("level changed : $value");
@@ -18,8 +20,7 @@ class _AddTargetViewState extends State<AddTargetView> {
   }
 
   void _onAdd() {
-    // print("the input content is ${_contentController.text}");
-    // Profile.addTarget(_contentController.text, ,_curLevel);
+    Profile.addTarget(_contentController.text, _deadline, _curLevel);
     Navigator.of(context).pop(true);
   }
 
@@ -63,12 +64,15 @@ class _AddTargetViewState extends State<AddTargetView> {
             icon: Icon(Icons.event),
             dateLabelText: 'Date',
             timeLabelText: "Hour",
-            onChanged: (val) => print(val),
+            onChanged: (val) {
+              _deadline = DateTime.parse(val);
+              print('changed: $val - ${val.runtimeType}');
+            },
             validator: (val) {
-              print(val);
+              print('validate:$val');
               return null;
             },
-            onSaved: (val) => print(val),
+            onSaved: (val) => print('saved: $val'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
