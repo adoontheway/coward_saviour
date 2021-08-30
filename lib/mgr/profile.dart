@@ -71,8 +71,11 @@ class Profile {
   static get motivations => _motivations;
 
   static addRecord(String content, DateTime date, bool useful, int cost) {
-    _records.add(
-        Record(content: content, datetime: date, useful: useful, cost: cost));
+    _records.add(Record(
+        content: content,
+        datetime: date.millisecondsSinceEpoch,
+        useful: useful,
+        cost: cost));
   }
 
   static delRecord(Record rec) {
@@ -82,7 +85,8 @@ class Profile {
   static get records => _records;
 
   static addTarget(String content, DateTime date, int level) {
-    _targets.add(Target(content: content, deadline: date, level: level));
+    _targets.add(Target(
+        content: content, deadline: date.millisecondsSinceEpoch, level: level));
   }
 
   static delTarget(Target tar) {

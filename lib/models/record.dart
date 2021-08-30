@@ -6,7 +6,7 @@ class Record {
     Record({required this.content,required this.datetime,required this.cost,required this.useful});
 
     String content;
-    DateTime datetime;
+    int datetime;
     int cost;
     bool useful;
     

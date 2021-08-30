@@ -9,7 +9,7 @@ part of 'record.dart';
 Record _$RecordFromJson(Map<String, dynamic> json) {
   return Record(
     content: json['content'] as String,
-    datetime: DateTime.parse(json['datetime'] as String),
+    datetime: json['datetime'] as int,
     cost: json['cost'] as int,
     useful: json['useful'] as bool,
   );
@@ -17,7 +17,7 @@ Record _$RecordFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RecordToJson(Record instance) => <String, dynamic>{
       'content': instance.content,
-      'datetime': instance.datetime.toIso8601String(),
+      'datetime': instance.datetime,
       'cost': instance.cost,
       'useful': instance.useful,
     };

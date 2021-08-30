@@ -6,7 +6,7 @@ class Target {
     Target({required this.content,required this.deadline,required this.level});
 
     String content;
-    DateTime deadline;
+    int deadline;
     int level;
     
     factory Target.fromJson(Map<String,dynamic> json) => _$TargetFromJson(json);

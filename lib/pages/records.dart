@@ -38,7 +38,7 @@ class _RecordPageState extends State<RecordPage> {
                       height: 5.0,
                     ),
                     Text(
-                      "${_r.datetime.toLocal()} ",
+                      "${DateTime.fromMillisecondsSinceEpoch(_r.datetime)} ",
                     ),
                   ],
                 ),

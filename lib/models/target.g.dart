@@ -9,13 +9,13 @@ part of 'target.dart';
 Target _$TargetFromJson(Map<String, dynamic> json) {
   return Target(
     content: json['content'] as String,
-    deadline: DateTime.parse(json['deadline'] as String),
+    deadline: json['deadline'] as int,
     level: json['level'] as int,
   );
 }
 
 Map<String, dynamic> _$TargetToJson(Target instance) => <String, dynamic>{
       'content': instance.content,
-      'deadline': instance.deadline.toIso8601String(),
+      'deadline': instance.deadline,
       'level': instance.level,
     };
